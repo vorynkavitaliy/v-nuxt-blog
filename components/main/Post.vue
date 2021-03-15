@@ -1,0 +1,60 @@
+<template>
+    <el-card shadow="hover" :body-style="{ padding: 0 }" class="post">
+        <header slot="header" class="post-header">
+            <h3>{{post.title}}</h3>
+            <small>
+                <i class="el-icon-time"></i>
+                {{ post.date | date('date') }}
+            </small>
+        </header>
+        <div class="post-body">
+            <img :src="post.imageUrl" alt="img" class="post-img">
+        </div>
+        <footer class="post-footer">
+            <el-button round @click="openPost(post._id)">Open Post</el-button>
+
+            <span>
+                <i class="el-icon-message"></i>
+                {{post.comments.length}}
+            </span>
+        </footer>
+    </el-card>
+</template>
+
+<script>
+export default {
+    name: "Post",
+
+    props: {
+        post: {
+            type: Object,
+            require: true
+        }
+    },
+
+    methods: {
+        openPost(id) {
+            this.$router.push(`/post/${id}`)
+        }
+    }
+};
+</script>
+
+<style lang="sass" scoped>
+.post
+    margin-bottom: 2rem
+
+    &-header
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &-img
+        width: 100%
+        height: auto
+
+    &-footer
+        padding: 0.5rem
+        display: flex
+        align-items: center
+        justify-content: space-between
+</style>
