@@ -47,7 +47,7 @@ module.exports = {
     },
 
     axios: {
-        baseURL: process.env.BASE_URL || 'http://localhost:3000'
+        baseURL: process.env.BASEURL || 'http://localhost:3000'
     },
 
     build: {
